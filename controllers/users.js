@@ -22,12 +22,10 @@ const createUser = (req, res, next) => {
   return bcrypt
     .hash(password, 10)
     .then((hash) => User.create({ name, email, password: hash }))
-    .then((user) =>
-      res.status(201).send({
-        name: user.name,
-        email: user.email,
-      })
-    )
+    .then((user) => res.status(201).send({
+      name: user.name,
+      email: user.email,
+    }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest(INVALID_USER_DATA_ERROR_TEXT));
@@ -66,7 +64,7 @@ const updProfile = (req, res, next) => {
   return User.findByIdAndUpdate(
     req.user._id,
     { name, email },
-    { new: true, runValidators: true }
+    { new: true, runValidators: true },
   )
     .orFail(() => {
       throw new NotFound(USER_ID_NOT_FOUND_ERROR_TEXT);
@@ -93,13 +91,13 @@ const login = (req, res, next) => {
       const token = jwt.sign(
         { _id: user._id },
         NODE_ENV === 'production' ? JWT_SECRET : DEV_JWT_SECRET,
-        { expiresIn: '7d' }
+        { expiresIn: '7d' },
       );
       res
         .cookie('jwt', token, {
           maxAge: 7 * 24 * 60 * 60,
           httpOnly: true,
-          sameSite: true,
+          sameSite: 'none',
         })
         .send({ token })
         .end();

@@ -97,13 +97,22 @@ const login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 7 * 24 * 60 * 60,
           httpOnly: true,
-          sameSite: 'none',
-          secure: true,
+          sameSite: true,
         })
         .send({ token })
         .end();
     })
     .catch(next);
+};
+
+const autologin = (req, res) => {
+  const { cookie } = req.headers;
+
+  if (!cookie || cookie === null) {
+    return res.send({ auth: false });
+  }
+
+  return res.send({ auth: true });
 };
 
 const signout = (_, res) => {
@@ -116,4 +125,5 @@ module.exports = {
   updProfile,
   login,
   signout,
+  autologin,
 };

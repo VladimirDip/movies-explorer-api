@@ -1,6 +1,6 @@
 const { NODE_ENV, JWT_SECRET, PORT = 3000 } = process.env;
 
-const DEV_DATABASE = 'mongodb://127.0.0.1:27017/moviesdb';
+const DEV_DATABASE = 'mongodb://mongodb:27017/bitfilmsdb';
 const DEV_JWT_SECRET = 'dev-secret';
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 const ALLOWEDCORS = [

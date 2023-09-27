@@ -10,25 +10,33 @@ const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 //   'https://localhost:3000',
 // ];
 
+// const ALLOWEDCORS = {
+//   origin: [
+//     'http://diploma-dip.nomoredomainsicu.ru',
+//     'https://diploma-dip.nomoredomainsicu.ru',
+//     'http://localhost:3000',
+//     'https://localhost:3000',
+//     'http://api-diploma-dip.nomoredomainsicu.ru',
+//     'https://api-diploma-dip.nomoredomainsicu.ru',
+//   ],
+//   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204,
+//   allowedHeaders: [
+//     'Content-Type',
+//     'Origin',
+//     'Referer',
+//     'Accept',
+//     'Authorization',
+//   ],
+//   credentials: true,
+// };
+
 const ALLOWEDCORS = {
-  origin: [
-    'http://diploma-dip.nomoredomainsicu.ru',
-    'https://diploma-dip.nomoredomainsicu.ru',
-    'http://localhost:3000',
-    'https://localhost:3000',
-    'http://api-diploma-dip.nomoredomainsicu.ru',
-    'https://api-diploma-dip.nomoredomainsicu.ru',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: false,
   optionsSuccessStatus: 204,
-  allowedHeaders: [
-    'Content-Type',
-    'Origin',
-    'Referer',
-    'Accept',
-    'Authorization',
-  ],
   credentials: true,
 };
 

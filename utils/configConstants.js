@@ -16,6 +16,8 @@ const ALLOWEDCORS = {
     'https://diploma-dip.nomoredomainsicu.ru',
     'http://localhost:3000',
     'https://localhost:3000',
+    'http://api-diploma-dip.nomoredomainsicu.ru',
+    'https://api-diploma-dip.nomoredomainsicu.ru',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,

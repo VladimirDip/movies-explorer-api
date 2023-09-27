@@ -10,14 +10,14 @@ const limiter = require('./middlewares/limiter');
 const routes = require('./routes');
 const error = require('./middlewares/serverError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { DEV_DATABASE, PORT } = require('./utils/configConstants');
+const { DEV_DATABASE, PORT, ALLOWEDCORS } = require('./utils/configConstants');
 
 const app = express();
 
 // app.use(cors);
 
 app.use(helmet());
-app.use(cors());
+app.use('*', cors(ALLOWEDCORS));
 app.use(cookieParser());
 app.use(express.json());
 
